@@ -5,13 +5,20 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import clsx from "clsx";
 import { Providers } from "./providers";
+import { PrismicPreview } from "@prismicio/next";
+import { createClient, repositoryName } from "@/prismicio";
 
 const urbanist = Urbanist({ subsets: ["latin"] });
 
-export const metadata: Metadata = {
-  title: "Portfolio",
-  description: "Portfólio de Hugo Henrique",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const client = createClient();
+  const settings = await client.getSingle("settings");
+
+  return {
+    title: settings.data.meta_title,
+    description: settings.data.meta_description,
+  };
+}
 
 export default function RootLayout({
   children,
@@ -19,13 +26,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="pt-br"
-    >
+    <html lang="pt-br">
       <body
         className={clsx(
           urbanist.className,
-          "bg-slate-900 text-slate-100 relative min-h-screen"
+          "relative min-h-screen bg-slate-900 text-slate-100",
         )}
       >
         <Providers>
@@ -34,8 +39,9 @@ export default function RootLayout({
           <Footer />
         </Providers>
         <div className="background-gradient absolute inset-0 -z-50 max-h-screen" />
-        <div className="pointer-events-none absolute mt-0 inset-0 -z-40 h-full bg-[url('/noise.jpg')] opacity-5 mix-blend-soft-light"></div>
+        <div className="pointer-events-none absolute inset-0 -z-40 mt-0 h-full bg-[url('/noise.jpg')] opacity-5 mix-blend-soft-light"></div>
       </body>
+      <PrismicPreview repositoryName={repositoryName} />
     </html>
   );
 }

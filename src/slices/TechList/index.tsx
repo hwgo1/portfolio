@@ -49,7 +49,7 @@ const TechList = ({ slice }: TechListProps): JSX.Element => {
               : gsap.utils.random(600, 400);
           },
           ease: "power3.inOut",
-        }
+        },
       );
     }, component);
     return () => ctx.revert();

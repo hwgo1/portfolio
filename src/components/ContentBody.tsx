@@ -16,9 +16,12 @@ export default function ContentBody({
     <Bounded as="article">
       <div className="rounded-2xl border-2 border-slate-800 bg-slate-900 px-4 py-10 md:px-8 md:py-20">
         <Heading as="h1">{page.data.title}</Heading>
-        <div className="flex gap-4 mt-8 text-yellow-400">
+        <div className="mt-8 flex gap-4 text-yellow-400">
           {page.tags.map((tag, index) => (
-            <span key={index} className="text-xl font-bold border border-yellow-400 rounded-3xl py-1 px-2">
+            <span
+              key={index}
+              className="rounded-3xl border border-yellow-400 px-2 py-1 text-xl font-bold"
+            >
               {tag}
             </span>
           ))}

@@ -20,10 +20,9 @@ const ContentIndex = async ({
   const blogpost = await client.getAllByType("blogpost");
   const project = await client.getAllByType("project");
 
+  const contentType = slice.primary.content_type || "Blog";
 
-  const contentType = slice.primary.content_type || "Blog"
-
-  const items = contentType === "Blog" ? blogpost : project
+  const items = contentType === "Blog" ? blogpost : project;
 
   return (
     <Bounded
@@ -38,7 +37,12 @@ const ContentIndex = async ({
           <PrismicRichText field={slice.primary.description} />
         </div>
       )}
-      <ContentList items={items} contentType={contentType} viewMoreText={slice.primary.view_more_text} fallbackItemImage={slice.primary.fallback_image}/>
+      <ContentList
+        items={items}
+        contentType={contentType}
+        viewMoreText={slice.primary.view_more_text}
+        fallbackItemImage={slice.primary.fallback_image}
+      />
     </Bounded>
   );
 };

@@ -40,7 +40,7 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
           stagger: {
             each: 0.1,
           },
-        }
+        },
       );
 
       timeline.fromTo(
@@ -55,7 +55,7 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
           ease: "elastic.out(1.75,0.75)",
           duration: 1,
           transformOrigin: "top",
-        }
+        },
       );
     }, component);
     return () => ctx.revert();
@@ -78,9 +78,9 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
       ref={component}
-      className="lg:py-8 md:py-6 py-10"
+      className="py-10 md:py-6 lg:py-8"
     >
-      <div className="grid min-h-[70vh] grid-cols-1 md:grid-cols-2 items-center">
+      <div className="grid min-h-[70vh] grid-cols-1 items-center md:grid-cols-2">
         <Shapes />
         <div className="col-start-1 lg:row-start-1">
           <h1

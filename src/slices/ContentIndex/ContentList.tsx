@@ -10,11 +10,11 @@ import { Content } from "@prismicio/client";
 gsap.registerPlugin(ScrollTrigger);
 
 type ContentListProps = {
-    items: Content.BlogpostDocument[] | Content.ProjectDocument[];
-    contentType: Content.ContentIndexSlice["primary"]["content_type"];
-    fallbackItemImage: Content.ContentIndexSlice["primary"]["fallback_image"];
-    viewMoreText: Content.ContentIndexSlice["primary"]["view_more_text"];
-  };
+  items: Content.BlogpostDocument[] | Content.ProjectDocument[];
+  contentType: Content.ContentIndexSlice["primary"]["content_type"];
+  fallbackItemImage: Content.ContentIndexSlice["primary"]["fallback_image"];
+  viewMoreText: Content.ContentIndexSlice["primary"]["view_more_text"];
+};
 
 export default function ContentList({
   items,
